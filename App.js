@@ -1,10 +1,21 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 
 export default function App() {
+  const [counter, setCounter] = React.useState(0);
+  
+  function doit(){
+    let sum = Number(counter) + 1;
+    setCounter(sum)
+  }
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Text style={styles.elso}>Counter</Text>
+      <View><Text style={styles.elso}>{counter}</Text></View>
+      <Button title='Count' onPress={doit}/> 
+      <Button title='zero' onPress={() => setCounter(0)}/>
       <StatusBar style="auto" />
     </View>
   );
@@ -13,8 +24,17 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#008',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  elso: {
+    color: '#fff',
+    fontSize: 30,
+  },
+  input: {
+    width: '90%',
+    backgroundColor: 'white',
+    fontSize: 30,
   },
 });
